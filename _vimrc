@@ -1,14 +1,14 @@
 syntax on
+set number
 set mouse=a
+autocmd GUIEnter * set vb t_vb=
 set clipboard=unnamed
 set showcmd
 set ruler
-set encoding=UTF-8
+set encoding=utf8
 set showmatch
 set sw=4
-set nolist
-set rnu
-set cursorline
+set relativenumber
 let mapleader = " "
 set laststatus=2
 set backspace=2
@@ -16,27 +16,23 @@ set guioptions-=T
 set guioptions-=L
 imap ii <Esc>
 
-nmap <Leader>g :source $HOME\_vimrc<CR>
-
-nmap <Leader>w :w <CR>
-
-nmap <Leader>q :q <CR>
-
+"Mapping to reload config
+nmap <leader>g :source $HOME\_vimrc<CR>
+nmap <leader>w :w <CR>
+nmap <leader>q :q <CR>
 
 if has("gui_running")
-	if has("gui_gtk2")
-		set guifont=Inconsolata\ 12
-	elseif has("gui_macvim")
-		set guifont=Menlo\ Regular:h14
-	elseif has("gui_win32")
-		set guifont=Consolas:h11:cANSI
-	endif
+
+  if has("gui_gtk2")
+    set guifont=Inconsolata\ 12
+  elseif has("gui_macvim")
+    set guifont=Menlo\ Regular:h14
+  elseif has("gui_win32")
+    set guifont=Consolas:h11:cANSI
+  endif
 endif
 
 call plug#begin('~/.vim/plugged')
-
-
-
 Plug 'sheerun/vim-polyglot'
 Plug 'HerringtonDarkholme/yats.vim'
 Plug 'yuezk/vim-js'
@@ -87,29 +83,9 @@ Plug 'tpope/vim-repeat'
 
 Plug 'ryanoasis/vim-devicons'
 
-
 call plug#end()
-
+ 
+nmap <Leader>n :NERDTreeFind<CR>
+nmap <Leader>s <Plug>(easymotion-s2)
 colorscheme gruvbox
-nmap <Leader>nt :NERDTreeFind<CR>
-
 let g:gruvbox_contrast_dark = "hard"
-let g:deoplete#enable_at_startup = 1
-let g:jsx_ext_required = 0
-highlight Normal ctermbg=NONE
-set laststatus=2
-set noshowmode
-
-
-autocmd BufRead *.js set filetype=javascript.jsx
-autocmd BufRead *.jsx set filetype=javascript.jsx
-augroup filetype javascript syntax=javascript
-
-
-
-
-
-  
-
-
-
